@@ -5,7 +5,8 @@ git clone 远端URL
 尝试去更新本地为远端github仓库
 git fetch 远端缩写
 git merge 远端缩写/分支名称
-
+尝试去将本地文件更新到远端github仓库
+git push 远端缩写 分支名称
 
 
 
