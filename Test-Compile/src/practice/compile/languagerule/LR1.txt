@@ -1,5 +1,5 @@
 ﻿tate	ACTION																																	GOTO																
-	{	}	id	;	[	num	]	baic	=	if	(	)	ele	while	do	b-eak	||	&&	==	!=	<	<=	>=	>	+	-	*	/	!	#NAME?	T-UE	FALE	$	T	PG	BK	D	D	T			L	B	J	E	-	E-	TE	U	F
+	{	}	id	;	[	num	]	basic	=	if	(	)	else	while	do	break	||	&&	==	!=	<	<=	>=	>	+	-	*	/	!	real	true	false	$	ST	PG	BK	DS	D	T	SS	S	L	B	J	E	R	ER	TE	U	F
 0	3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	acc	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	-1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
