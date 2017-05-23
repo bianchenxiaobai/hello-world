@@ -1,6 +1,7 @@
 package practice.compile.languagerule;
 
 import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,11 +25,10 @@ public class StatusTable {
 	@Test
 	public void testTable() throws FileNotFoundException{
 		Scanner scan=new Scanner(new FileInputStream(filename));
+		scan.nextLine();
 		String head=scan.nextLine();
 		Scanner headScan=new Scanner(head);
 		List<String> nameList=new ArrayList<String>();
-		//过略掉第一个BOM编码字节
-		headScan.next();
 		while(headScan.hasNext()){
 			nameList.add(headScan.next());
 		}
