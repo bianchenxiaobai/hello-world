@@ -1,0 +1,45 @@
+ST -> PG
+PG -> BK
+BK -> { DS SS }
+DS -> DS D
+DS -> ''
+D -> T id ;
+T -> T [ num ]
+T -> basic
+SS -> SS S
+SS -> ''
+S -> L = B ;
+S -> if ( B ) S else S
+S -> while ( B ) S
+S -> do S while ( B ) ;
+S -> break ;
+S -> BK
+L -> L [ B ]
+L -> id
+B -> B || J
+B -> J
+J -> J && E
+J -> E
+E -> E == R
+E -> E != R
+E -> R
+R -> ER < ER
+R -> ER <= ER
+R -> ER >= ER
+R -> ER > ER
+R -> ER
+ER -> ER + TE
+ER -> ER ¨C TE
+ER -> TE
+TE -> TE * U
+TE -> TE / U
+TE -> U
+U -> ! U
+U -> - U
+U -> F
+F -> ( B )
+F -> L
+F -> num
+F -> real
+F -> true
+F -> false
