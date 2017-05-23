@@ -11,7 +11,7 @@ public class TokenKnown {
 	private static int state=0,index=0,head=0;
 	private static char ch=0;
 	private static String str=null;
-	private static String file="src/practice/compile/word/simple.txt";
+	private static String file="src/practice/compile/languagerule/input.txt";
 	public static Token getToken(){
 		switch(state){
 		case 0:

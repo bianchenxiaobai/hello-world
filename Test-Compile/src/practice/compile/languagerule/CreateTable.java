@@ -13,7 +13,7 @@ import org.junit.Test;
 public class CreateTable {
 	// 存储产生式
 	// 第一个为起始符号，后面为产生符号
-	private static List<List<String>> createTable = new ArrayList<List<String>>();
+	static List<List<String>> createTable = new ArrayList<List<String>>();
 	//得到第i个产生式的左边部分
 	public static String getLeftNTSign(int i){
 		return createTable.get(i).get(0);
@@ -71,7 +71,7 @@ public class CreateTable {
 					createTable.add(list);
 				}
 			}
-			System.out.println("产生式输入完成");
+			//System.out.println("产生式输入完成");
 		} catch (FileNotFoundException e){
 			e.printStackTrace();
 		}

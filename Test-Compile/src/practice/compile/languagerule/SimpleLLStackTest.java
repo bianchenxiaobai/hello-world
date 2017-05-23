@@ -15,6 +15,61 @@ public class SimpleLLStackTest {
 		tokens=TokenKnown.getTokenList();
 		tokens.add(new Token(Token.EOF,"$"));
 		TokenKnown.showTokens(tokens);
+		//初始化状态为0
+		stStack.push(0);
+		//初始化读取指针为开始
+		int k=0;
+		//
+		int cnt=0;
+		System.out.printf("\t\t状态栈\t\t    符号栈\t\t动作\n");
+		while(true&&cnt++<10){
+			int st=stStack.peek();
+			Token token=tokens.get(k);
+			Action action=StatusTable.getAction(st,token.name);
+			//输出当前状态
+			StringBuilder sb=null;
+			sb=new StringBuilder();
+			for(int i=0;i<stStack.size();i++){
+				sb.append(""+stStack.get(i));
+			}
+			System.out.printf("%20s ",sb.toString());
+			sb=new StringBuilder();
+			//输出当前符号栈
+			for(int i=0;i<signStack.size();i++){
+				sb.append(""+signStack.get(i));
+			}
+			System.out.printf("%20s ", sb.toString());
+			if(action.type==Action.SHIFT){
+				//移动到状态i同时更新
+				stStack.push(action.no);
+				signStack.push(token.name);
+				System.out.printf("%20s ","移入状态"+action.no);
+				k++;
+			}else if(action.type==Action.REDUCTION){
+				//使用第i个产生式进行归约
+				List<String> list=CreateTable.getRightList(action.no);
+				//弹出右边部分，加入左边部分,同步弹出状态
+				for(int i=0;i<list.size();i++){
+					signStack.pop();
+					stStack.pop();
+				}
+				//重新使用左部更新状态
+				signStack.push(CreateTable.getLeftNTSign(action.no));
+				Action gt=StatusTable.getAction(st, token.name);
+				stStack.push(gt.no);
+				//更新成功
+				System.out.printf("%20s ","归约产生式为"+CreateTable.getAllList(i));
+			}else if(action.type==Action.ACCEPT){
+				System.out.println("输入字符串被接受");
+				break;
+			}else{
+				System.out.println("发生了一个错误");
+				break;
+			}
+			System.out.println();
+		}
+		//System.out.println(StatusTable.statusTable.get(0).get(tokens.get(0).name).type);
+		//System.out.println(StatusTable.statusTable.get(0).get(tokens.get(0).name).no);
 	}
 
 }

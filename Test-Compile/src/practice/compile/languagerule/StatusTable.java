@@ -17,14 +17,25 @@ public class StatusTable {
 	// 参数1:当前状态
 	// 参数2:当前文法符号
 	// 查表获得移入归约行为
-	public static List<Map<String, Action>> statusTable = new ArrayList<Map<String, Action>>();
+	static List<Map<String, Action>> statusTable = new ArrayList<Map<String, Action>>();
 	//表的大小属性
 	public static final int statusNumber=12;
 	public static final String filename="src/practice/compile/languagerule/LR1.txt";
+	public static Action getAction(int st,String tokenname){
+		return statusTable.get(st).get(tokenname);
+	}
 	// 准备好所需要的表
-	@Test
+	/*@Test
 	public void testTable() throws FileNotFoundException{
-		Scanner scan=new Scanner(new FileInputStream(filename));
+		
+	}*/
+	static{
+		Scanner scan=null;
+		try {
+			scan = new Scanner(new FileInputStream(filename));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		scan.nextLine();
 		String head=scan.nextLine();
 		Scanner headScan=new Scanner(head);
@@ -33,11 +44,7 @@ public class StatusTable {
 			nameList.add(headScan.next());
 		}
 		headScan.close();
-		System.out.println("名字总共有"+nameList.size());
-		for(int i=0;i<nameList.size();i++){
-			System.out.printf("%7s",nameList.get(i));
-		}
-		System.out.println();
+		//System.out.println("读取的符号总共有50个");
 		//一行行读取字符
 		while(scan.hasNext()){
 			String line=scan.nextLine();
@@ -61,26 +68,26 @@ public class StatusTable {
 					}
 				}
 			}
-			System.out.println("读取的map大小为"+map.size());
+			//System.out.println("读取的map大小为"+map.size());
 			statusTable.add(map);
 			lineScan.close();
 		}
-		System.out.println("输出如下");
+		/*System.out.println("输出如下");
 		for(int i=0;i<nameList.size();i++){
 			System.out.printf("%7s",nameList.get(i));
 		}
 		System.out.println();
-		for(int i=0;i<100;i++){
+		for(int i=0;i<statusTable.size();i++){
 			Map<String,Action> map=statusTable.get(i);
-			//System.out.println("map集合大小为"+map.size());
 			for(int k=0;k<map.size();k++){
 				System.out.printf("%7s",map.get(nameList.get(k)).no);
 			}
 			System.out.println();
-		}
+		}*/
+		//System.out.println("总共的符号有"+nameList.size());
+		//System.out.println("总共状态有"+statusTable.size());
+		//System.out.println("读取LR(1)表成功");
 		scan.close();
-	}
-	static {
 		/*
 		//初始化表
 		for(int i=0;i<statusNumber;i++){
