@@ -18,6 +18,7 @@ public class KeyTable {
 			map.put(keys[i], Token.KEY);
 		//ÌØÊâ´úÌæÒ»°ã
 		map.put("if", Token.IF);
+		map.put("else", Token.ELSE);
 		map.put("do", Token.DO);
 		map.put("while", Token.WHILE);
 		map.put("break", Token.BREAK);

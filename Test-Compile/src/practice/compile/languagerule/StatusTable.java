@@ -27,6 +27,65 @@ public class StatusTable {
 	// 准备好所需要的表
 	/*@Test
 	public void testTable() throws FileNotFoundException{
+		Scanner scan=null;
+		try {
+			scan = new Scanner(new FileInputStream(filename));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		scan.nextLine();
+		String head=scan.nextLine();
+		Scanner headScan=new Scanner(head);
+		List<String> nameList=new ArrayList<String>();
+		while(headScan.hasNext()){
+			nameList.add(headScan.next());
+		}
+		headScan.close();
+		System.out.println("读取的符号总共有"+nameList.size());
+		//一行行读取字符
+		int cnt=0;
+		while(scan.hasNext()&&cnt++<20){
+			String line=scan.nextLine();
+			Scanner lineScan=new Scanner(line);
+			//过略状态数字
+			lineScan.next();
+			//读取字符到映射中
+			Map<String,Action> map=new HashMap<String,Action>();
+			for(int i=0;i<nameList.size();i++){
+				String str=lineScan.next();
+				if(str.equals("acc")){
+					map.put(nameList.get(i), Action.getAcceptAction());
+				}else{
+					Integer no=Integer.parseInt(str);
+					if(no==0){
+						map.put(nameList.get(i), Action.getErrorAction());
+					}else if(no>0){
+						map.put(nameList.get(i), Action.getAction(Action.SHIFT, no));
+					}else{
+						map.put(nameList.get(i),Action.getAction(Action.REDUCTION, -no));
+					}
+				}
+			}
+			System.out.println("读取的map大小为"+map.size());
+			statusTable.add(map);
+			lineScan.close();
+		}
+		/*System.out.println("输出如下");
+		for(int i=0;i<nameList.size();i++){
+			System.out.printf("%7s",nameList.get(i));
+		}
+		System.out.println();
+		for(int i=0;i<statusTable.size();i++){
+			Map<String,Action> map=statusTable.get(i);
+			for(int k=0;k<map.size();k++){
+				System.out.printf("%7s",map.get(nameList.get(k)).no);
+			}
+			System.out.println();
+		}
+		System.out.println("总共的符号有"+nameList.size());
+		System.out.println("总共状态有"+statusTable.size());
+		System.out.println("读取LR(1)表成功");
+		scan.close();
 		
 	}*/
 	static{

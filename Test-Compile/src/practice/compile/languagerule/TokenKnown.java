@@ -11,7 +11,7 @@ public class TokenKnown {
 	private static int state=0,index=0,head=0;
 	private static char ch=0;
 	private static String str=null;
-	private static String file="src/practice/compile/languagerule/input.txt";
+	private static String filename="src/practice/compile/languagerule/input2.txt";
 	public static Token getToken(){
 		switch(state){
 		case 0:
@@ -85,11 +85,14 @@ public class TokenKnown {
 		return null;
 	}
 	public static List<Token> getTokenList() throws FileNotFoundException{
+		return getTokenList(filename);
+	}
+	public static List<Token> getTokenList(String filename) throws FileNotFoundException{
 		List<Token> list=new ArrayList<Token>();
 		boolean flag=true;
 		StringBuilder sb=new StringBuilder();
 		BufferedReader reader;
-		reader = new BufferedReader(new FileReader(file));
+		reader = new BufferedReader(new FileReader(filename));
 		int bufsize=1024,len;
 		char buf[]=new char[bufsize];
 		while(true){

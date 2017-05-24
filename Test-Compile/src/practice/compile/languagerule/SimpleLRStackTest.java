@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Stack;
 
-public class SimpleLLStackTest {
+public class SimpleLRStackTest {
 	// 状态栈，符号栈
 	private static Stack<Integer> stStack = new Stack<Integer>();
 	private static Stack<String> signStack = new Stack<String>();
@@ -19,13 +19,11 @@ public class SimpleLLStackTest {
 		stStack.push(0);
 		//初始化读取指针为开始
 		int k=0;
-		//
-		int cnt=0;
-		System.out.printf("\t\t状态栈\t\t    符号栈\t\t动作\n");
-		while(true&&cnt++<10){
-			int st=stStack.peek();
+		System.out.printf("%20s %20s %40s\n","status","sign","action");
+		
+		while(true){
 			Token token=tokens.get(k);
-			Action action=StatusTable.getAction(st,token.name);
+			Action action=StatusTable.getAction(stStack.peek(),token.name);
 			//输出当前状态
 			StringBuilder sb=null;
 			sb=new StringBuilder();
@@ -43,7 +41,7 @@ public class SimpleLLStackTest {
 				//移动到状态i同时更新
 				stStack.push(action.no);
 				signStack.push(token.name);
-				System.out.printf("%20s ","移入状态"+action.no);
+				System.out.printf("%40s ","移入状态"+action.no);
 				k++;
 			}else if(action.type==Action.REDUCTION){
 				//使用第i个产生式进行归约
@@ -55,21 +53,25 @@ public class SimpleLLStackTest {
 				}
 				//重新使用左部更新状态
 				signStack.push(CreateTable.getLeftNTSign(action.no));
-				Action gt=StatusTable.getAction(st, token.name);
+				Action gt=StatusTable.getAction(stStack.peek(), CreateTable.getLeftNTSign(action.no));
 				stStack.push(gt.no);
 				//更新成功
-				System.out.printf("%20s ","归约产生式为"+CreateTable.getAllList(i));
+				System.out.printf("%40s ","归约产生式为"+CreateTable.getAllList(action.no));
 			}else if(action.type==Action.ACCEPT){
+				System.out.println();
 				System.out.println("输入字符串被接受");
 				break;
 			}else{
+				System.out.println();
+				System.out.println("st=="+stStack.peek());
+				System.out.println("token.name="+token.name);
+				System.out.println(StatusTable.getAction(stStack.peek(), token.name).type);
+				System.out.println(StatusTable.getAction(stStack.peek(), token.name).no);
 				System.out.println("发生了一个错误");
 				break;
 			}
 			System.out.println();
 		}
-		//System.out.println(StatusTable.statusTable.get(0).get(tokens.get(0).name).type);
-		//System.out.println(StatusTable.statusTable.get(0).get(tokens.get(0).name).no);
+	
 	}
-
 }

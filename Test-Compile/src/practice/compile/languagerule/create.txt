@@ -1,4 +1,3 @@
-ST -> PG
 PG -> BK
 BK -> { DS SS }
 DS -> DS D
@@ -9,6 +8,7 @@ T -> basic
 SS -> SS S
 SS -> ''
 S -> L = B ;
+S -> if ( B ) S
 S -> if ( B ) S else S
 S -> while ( B ) S
 S -> do S while ( B ) ;
@@ -29,7 +29,7 @@ R -> ER >= ER
 R -> ER > ER
 R -> ER
 ER -> ER + TE
-ER -> ER ¨C TE
+ER -> ER - TE
 ER -> TE
 TE -> TE * U
 TE -> TE / U

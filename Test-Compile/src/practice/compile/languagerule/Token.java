@@ -40,6 +40,7 @@ public class Token extends Sign{
 	public static final String BASIC="basic";//int,float
 	public static final String KEY="key";//ÆäËû¹Ø¼ü×Ö
 	public static final String IF="if";//if
+	public static final String ELSE="else";//else
 	public static final String DO="do";
 	public static final String WHILE="while";//while
 	public static final String BREAK="break";//break
