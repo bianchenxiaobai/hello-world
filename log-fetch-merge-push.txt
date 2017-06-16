@@ -1,15 +1,17 @@
-# 尝试去复制一个github仓库
+## 尝试去复制一个github仓库
 git clone 远端URL
 #（多种开头https://,git://,我觉得是类似的)
 #（git@开头好像是公钥私钥加密传送）
-# 尝试去更新本地为远端github仓库
+## 尝试去更新本地为远端github仓库
 git fetch 远端缩写
 git merge 远端缩写/分支名称
-# 尝试去将本地文件更新到远端github仓库
+## 尝试去将本地文件更新到远端github仓库
 git push 远端缩写 分支名称
 
 
-git commit 提交命令
+
+## git提交相关命令如下
+git commit # 提交命令，改动需要先添加到提交缓存
 -a # 提交所有的改动，但是新文件不会受到影响
 -m # 提交的注释说明
 
@@ -18,6 +20,14 @@ git add 文件名称 # 增加新文件到提交缓存
 git status # 查看git当前提交状态
 -v # 冗余显示
 
+## git提交的顺序如下
+# 先查看当前状态
+git status 
+# 将需要提交的加入缓存
+git add filename
+git commit -m 提交的消息
+# 对于不是新增或者外部改名的修改提交，可以使用如下
+git coomit -a -m 提交的消息
 
 
 # 其实试试vim还是蛮好用的
