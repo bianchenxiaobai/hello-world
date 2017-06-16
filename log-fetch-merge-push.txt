@@ -25,9 +25,9 @@ git status # 查看git当前提交状态
 git status 
 # 将需要提交的加入缓存
 git add filename
-git commit -m 提交的消息
+git commit -m '提交的消息'
 # 对于不是新增或者外部改名的修改提交，可以使用如下
-git coomit -a -m 提交的消息
+git coomit -a -m '提交的消息'
 
 
 # 其实试试vim还是蛮好用的
