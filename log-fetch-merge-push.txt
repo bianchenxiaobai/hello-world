@@ -27,7 +27,12 @@ git status
 git add filename
 git commit -m '提交的消息'
 # 对于不是新增或者外部改名的修改提交，可以使用如下
-git coomit -a -m '提交的消息'
+git commit -a -m '提交的消息'
+
+# 图形化查看历史记录
+git log --graph
+
+
 
 
 # 其实试试vim还是蛮好用的
